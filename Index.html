@@ -200,12 +200,33 @@
             border-radius: 4px;
         }
 
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            font-weight: bold;
+        }
+
+        .status-ok {
+            background: #4caf50;
+            color: white;
+        }
+
+        .status-error {
+            background: #f44336;
+            color: white;
+        }
+
         @media (max-width: 768px) {
             .content {
                 grid-template-columns: 1fr;
             }
             header h1 {
                 font-size: 1.8em;
+            }
+            .game-area {
+                padding: 20px;
             }
         }
 
@@ -225,13 +246,13 @@
     <div class="container">
         <header>
             <h1>🎮 Web App mit Werbung</h1>
-            <p>AdSense Integration Demo – Werbung wird hier angezeigt</p>
+            <p>AdSense Integration mit GitHub Pages</p>
         </header>
 
         <div class="content">
             <main class="main-content">
-                <h2>✅ App-ads.txt konfiguriert!</h2>
-                <p>Diese Web App ist vollständig für AdSense vorbereitet und enthält die korrekten Autorisierungsdateien.</p>
+                <h2>✅ GitHub Pages + AdSense Ready</h2>
+                <p>Diese Web App ist vollständig konfiguriert für Google AdSense mit korrekter app-ads.txt und HTTPS-Support.</p>
 
                 <!-- AD UNIT 1: Top Banner -->
                 <div class="ad-container">
@@ -269,21 +290,20 @@
                 </div>
 
                 <div class="success-box">
-                    <strong>✅ App-ads.txt Status:</strong><br>
-                    Ihre Datei sollte hier erreichbar sein:<br>
-                    <code>https://ihre-domain.de/app-ads.txt</code><br><br>
-                    <strong>Inhalt der Datei:</strong><br>
-                    <code>google.com, pub-1761007145350535, DIRECT, f08c47fec0942fa0</code>
+                    <strong>✅ System Status:</strong><br>
+                    App-ads.txt: <span id="adsTxtStatus" class="status-badge">Prüfe...</span><br>
+                    HTTPS: <span id="httpsStatus" class="status-badge">Prüfe...</span><br>
+                    URL: <code id="currentUrl"></code>
                 </div>
 
                 <div class="info-box">
                     <strong>📋 Nächste Schritte:</strong>
                     <ol style="margin: 10px 0 0 20px;">
-                        <li>Erstellen Sie die <strong>app-ads.txt</strong> Datei (siehe Anleitung oben)</li>
-                        <li>Laden Sie sie in Ihr Root-Verzeichnis hoch</li>
-                        <li>Testen Sie: <code>https://ihre-domain.de/app-ads.txt</code></li>
-                        <li>Erstellen Sie Ad Unit IDs im <a href="https://adsense.google.com" target="_blank">AdSense Dashboard</a></li>
-                        <li>Ersetzen Sie YOUR_AD_SLOT_ID_1/2/3/4 mit echten IDs</li>
+                        <li>Repository auf GitHub erstellt ✅</li>
+                        <li>GitHub Pages aktivieren (Settings → Pages)</li>
+                        <li>Optional: Custom Domain konfigurieren</li>
+                        <li>AdSense Konto erstellen</li>
+                        <li>Ad Unit IDs generieren und eintragen</li>
                     </ol>
                 </div>
             </main>
@@ -302,13 +322,25 @@
 
                 <div class="card">
                     <h3>📄 App-ads.txt</h3>
-                    <p><strong>Was ist das?</strong><br>
-                    Eine Autorisierungsdatei, die Google mitteilt, dass Ihre Publisher-ID echt ist und Werbung anzeigen darf.</p>
+                    <p><strong>Status:</strong> <span id="adsTxtStatusSidebar">Prüfe...</span></p>
+                    <p style="margin-top: 10px; font-size: 0.9em;">Diese Datei autorisiert Ihre Publisher-ID für Werbeschaltung.</p>
+                    <p style="margin-top: 10px;">
+                        <a href="/app-ads.txt" target="_blank" style="color: var(--color-primary);">app-ads.txt anzeigen</a>
+                    </p>
                 </div>
 
                 <div class="card">
-                    <h3>💰 Verdienst</h3>
-                    <p>Mit korrekt konfigurierter app-ads.txt erhöhen Sie Ihre Werbeeinnahmen um bis zu 30%, da mehr Werbetreibende Ihre Seite als vertrauenswürdig einstufen.</p>
+                    <h3>💰 Monetarisierung</h3>
+                    <p>Mit korrekt konfigurierter app-ads.txt und HTTPS erhöhen Sie Ihre Werbeeinnahmen um bis zu 30%.</p>
+                </div>
+
+                <div class="card">
+                    <h3>🔗 Quick Links</h3>
+                    <p style="line-height: 2;">
+                        <a href="https://adsense.google.com" target="_blank" style="color: var(--color-primary);">AdSense Dashboard</a><br>
+                        <a href="https://github.com" target="_blank" style="color: var(--color-primary);">GitHub</a><br>
+                        <a href="https://support.google.com/adsense" target="_blank" style="color: var(--color-primary);">AdSense Hilfe</a>
+                    </p>
                 </div>
             </aside>
         </div>
@@ -326,9 +358,10 @@
 
         <footer style="text-align: center; padding: 30px 20px; color: #666; margin-top: 30px;">
             <p>© 2025 Web App Demo | Mit Google AdSense Monetarisierung</p>
-            <p style="font-size: 0.9em;">Publisher ID: pub-1761007145350535</p>
+            <p style="font-size: 0.9em; margin-top: 5px;">Publisher ID: pub-1761007145350535</p>
             <p style="font-size: 0.8em; margin-top: 10px;">
-                <a href="/app-ads.txt" target="_blank" style="color: #2196F3;">app-ads.txt anzeigen</a>
+                <a href="/app-ads.txt" target="_blank" style="color: #2196F3;">app-ads.txt</a> | 
+                <a href="https://github.com/YOUR-USERNAME/YOUR-REPO" target="_blank" style="color: #2196F3;">GitHub</a>
             </p>
         </footer>
     </div>
@@ -375,21 +408,52 @@
         // AdSense Ads initialisieren
         (adsbygoogle = window.adsbygoogle || []).push({});
 
-        // App-ads.txt Prüfung
+        // System-Check beim Laden
         window.addEventListener('load', function() {
+            const baseUrl = window.location.origin;
+            document.getElementById('currentUrl').textContent = baseUrl;
+            
+            // HTTPS Check
+            const isHttps = window.location.protocol === 'https:';
+            const httpsStatus = document.getElementById('httpsStatus');
+            if (isHttps) {
+                httpsStatus.textContent = '✅ Aktiv';
+                httpsStatus.className = 'status-badge status-ok';
+            } else {
+                httpsStatus.textContent = '⚠️ HTTP';
+                httpsStatus.className = 'status-badge status-error';
+            }
+            
+            // App-ads.txt Check
             fetch('/app-ads.txt')
                 .then(response => {
+                    const statusMain = document.getElementById('adsTxtStatus');
+                    const statusSidebar = document.getElementById('adsTxtStatusSidebar');
+                    
                     if (response.ok) {
-                        console.log('✅ app-ads.txt gefunden!');
+                        statusMain.textContent = '✅ Gefunden';
+                        statusMain.className = 'status-badge status-ok';
+                        statusSidebar.innerHTML = '✅ <strong>Aktiv</strong>';
+                        statusSidebar.style.color = '#4caf50';
+                        console.log('✅ app-ads.txt korrekt konfiguriert');
                     } else {
-                        console.warn('⚠️ app-ads.txt nicht gefunden. Bitte erstellen Sie die Datei.');
+                        statusMain.textContent = '❌ Nicht gefunden';
+                        statusMain.className = 'status-badge status-error';
+                        statusSidebar.innerHTML = '❌ <strong>Fehlt</strong>';
+                        statusSidebar.style.color = '#f44336';
+                        console.warn('⚠️ app-ads.txt nicht gefunden - bitte erstellen');
                     }
                 })
                 .catch(() => {
-                    console.warn('⚠️ Fehler beim Laden der app-ads.txt');
+                    document.getElementById('adsTxtStatus').textContent = '❌ Fehler';
+                    document.getElementById('adsTxtStatus').className = 'status-badge status-error';
+                    document.getElementById('adsTxtStatusSidebar').innerHTML = '❌ <strong>Fehler</strong>';
                 });
             
-            console.log('Web App geladen. Publisher ID: pub-1761007145350535');
+            console.log('🚀 Web App geladen');
+            console.log('📍 URL:', baseUrl);
+            console.log('🔒 HTTPS:', isHttps);
+            console.log('🆔 Publisher ID: pub-1761007145350535');
         });
     </script>
 </body>
