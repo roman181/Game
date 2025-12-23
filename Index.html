@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Factory Tycoon Lite</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Factory Tycoon Lite</h1>
+    <div class="stats">
+      <div>💰 Geld: <span id="money">1000</span> €</div>
+      <div>😊 Zufriedenheit: <span id="satisfaction">50</span> %</div>
+      <div>⚙️ Level: <span id="techLevel">1</span></div>
+    </div>
+  </header>
+
+  <main>
+    <section class="panel" id="order-panel">
+      <h2>Aufträge</h2>
+      <button id="btn-new-order" class="btn primary">Neuen Auftrag generieren</button>
+      <div id="current-order" class="card"></div>
+    </section>
+
+    <section class="panel" id="process-panel">
+      <h2>Auftragsabwicklung</h2>
+      <div id="process-steps" class="steps"></div>
+    </section>
+
+    <section class="panel" id="management-panel">
+      <h2>Firmenmanagement</h2>
+      <div class="management-grid">
+        <div class="card">
+          <h3>Maschinen</h3>
+          <p>Produktionsgeschwindigkeit erhöhen.</p>
+          <button id="btn-upgrade-machines" class="btn">Maschinen upgraden (500€)</button>
+        </div>
+        <div class="card">
+          <h3>Mitarbeiter</h3>
+          <p>Fehlerquote und Dauer reduzieren.</p>
+          <button id="btn-train-staff" class="btn">Mitarbeiter schulen (300€)</button>
+        </div>
+        <div class="card">
+          <h3>Lager & Logistik</h3>
+          <p>Materialfluss und Transport optimieren.</p>
+          <button id="btn-upgrade-logistics" class="btn">Logistik verbessern (400€)</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" id="log-panel">
+      <h2>Log</h2>
+      <div id="log" class="log"></div>
+    </section>
+  </main>
+
+  <footer>
+    <small>Touch-optimierte Browser-Demo • GitHub-ready</small>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
