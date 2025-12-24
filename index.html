@@ -3,41 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="mobile-web-app-capable" content="yes">
-    <title>Metinmon Mobile: Online World</title>
+    <title>Metinmon Mobile 3D</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Three.js Import -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
 
 <div id="game-container">
-    <canvas id="game-canvas"></canvas>
+    <!-- 2D Canvas für Welt/Boden -->
+    <canvas id="world-canvas"></canvas>
+    <!-- 3D Canvas für Spieler Overlay -->
+    <canvas id="player-canvas"></canvas>
     
-    <!-- UI Layer -->
     <div id="ui-layer">
-        <!-- Top HUD -->
         <div class="hud-panel">
-            <div id="player-avatar"></div>
+            <div id="player-avatar"></div> <!-- Avatar Bild -->
             <div>
-                <div class="player-name">Pyrowulf <span class="lvl-badge">Lv.5</span></div>
+                <div class="player-name">Pyrowulf 3D <span class="lvl-badge">Lv.5</span></div>
                 <div class="bar-container hp-bg"><div class="bar-fill hp-fill" id="hud-hp"></div></div>
                 <div class="bar-container xp-bg"><div class="bar-fill xp-fill" id="hud-xp"></div></div>
             </div>
         </div>
 
-        <!-- Chat -->
         <div id="chat-box">
-            <div class="chat-msg chat-sys">Willkommen in Welt 1!</div>
+            <div class="chat-msg chat-sys">System: 3D Engine geladen.</div>
         </div>
 
-        <!-- Notification -->
         <div id="notification">LEVEL UP!</div>
 
-        <!-- Touch Controls -->
         <div class="controls-area">
-            <div id="joystick-zone">
-                <div id="stick"></div>
-            </div>
+            <div id="joystick-zone"><div id="stick"></div></div>
             <div id="actions">
                 <button class="action-btn btn-item" ontouchstart="game.useItem(event)">🧪</button>
                 <button class="action-btn btn-atk" id="btn-atk" ontouchstart="game.attack(event)">⚔️</button>
