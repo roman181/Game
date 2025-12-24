@@ -1,0 +1,46 @@
+/* --- RESET & BASIC --- */
+* { box-sizing: border-box; touch-action: none; user-select: none; -webkit-user-select: none; -webkit-tap-highlight-color: transparent; }
+body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #0f172a; font-family: 'Segoe UI', system-ui, sans-serif; }
+
+/* --- GAME LAYERS --- */
+#game-container { position: relative; width: 100%; height: 100%; }
+#game-canvas { display: block; width: 100%; height: 100%; image-rendering: pixelated; }
+#ui-layer { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
+
+/* --- HUD --- */
+.hud-panel { position: absolute; top: 15px; left: 15px; background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(4px); color: white; padding: 10px; border-radius: 12px; pointer-events: auto; border: 1px solid #334155; display: flex; gap: 12px; align-items: center; box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
+
+#player-avatar { width: 42px; height: 42px; background: #334155; border-radius: 8px; overflow: hidden; border: 2px solid #475569; background-size: cover; background-position: center; }
+.player-name { font-weight: 700; font-size: 15px; margin-bottom: 4px; display: flex; align-items: center; gap: 5px; }
+.lvl-badge { font-size: 11px; background: #fbbf24; color: #78350f; padding: 1px 4px; border-radius: 4px; }
+
+.bar-container { width: 140px; height: 10px; border-radius: 5px; overflow: hidden; margin-top: 3px; position: relative; }
+.hp-bg { background: #450a0a; }
+.xp-bg { background: #172554; height: 6px; margin-top: 4px; }
+
+.bar-fill { height: 100%; transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+.hp-fill { background: linear-gradient(90deg, #ef4444, #dc2626); }
+.xp-fill { background: linear-gradient(90deg, #3b82f6, #2563eb); }
+
+/* --- CHAT --- */
+#chat-box { position: absolute; bottom: 160px; left: 15px; width: 280px; height: 120px; background: rgba(0,0,0,0.6); pointer-events: auto; overflow-y: auto; color: white; font-size: 13px; padding: 8px; border-radius: 8px; display: flex; flex-direction: column; justify-content: flex-end; mask-image: linear-gradient(to bottom, transparent, black 20%); }
+.chat-msg { margin-bottom: 4px; line-height: 1.4; text-shadow: 1px 1px 2px black; }
+.chat-sys { color: #fbbf24; font-style: italic; }
+.chat-player { color: #60a5fa; font-weight: 700; }
+
+/* --- CONTROLS --- */
+.controls-area { pointer-events: auto; position: absolute; bottom: 30px; left: 0; width: 100%; height: 140px; display: flex; justify-content: space-between; padding: 0 40px; align-items: center; }
+
+#joystick-zone { width: 140px; height: 140px; background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%); border-radius: 50%; position: relative; border: 2px solid rgba(255,255,255,0.15); }
+#stick { width: 60px; height: 60px; background: rgba(255, 255, 255, 0.8); border-radius: 50%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); box-shadow: 0 0 15px rgba(0,0,0,0.3); }
+
+#actions { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; transform: rotate(-10deg) translateY(10px); }
+.action-btn { width: 70px; height: 70px; border-radius: 50%; border: none; font-weight: bold; color: white; font-size: 24px; box-shadow: 0 6px 0 rgba(0,0,0,0.4), 0 10px 10px rgba(0,0,0,0.3); transition: transform 0.1s, box-shadow 0.1s; position: relative; overflow: hidden; }
+.action-btn:active { transform: translateY(4px); box-shadow: 0 2px 0 rgba(0,0,0,0.4); }
+
+.btn-atk { background: linear-gradient(145deg, #ef4444, #b91c1c); grid-column: 2; width: 85px; height: 85px; font-size: 32px; border: 2px solid #fecaca; }
+.btn-item { background: linear-gradient(145deg, #f59e0b, #b45309); grid-column: 1; margin-top: 40px; border: 2px solid #fde68a; }
+
+/* --- EFFECTS --- */
+#notification { position: absolute; top: 20%; left: 50%; transform: translate(-50%, -50%) scale(0.5); font-size: 3rem; color: #fbbf24; font-weight: 900; text-shadow: 0 0 10px black, 0 0 30px orange; opacity: 0; pointer-events: none; text-align: center; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); white-space: nowrap; }
+#notification.active { opacity: 1; transform: translate(-50%, -50%) scale(1); }
